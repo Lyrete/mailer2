@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 var mysql = require('mysql2/promise');
 var connection = mysql.createConnection({
     host: process.env.MAILER_DBHOST,
