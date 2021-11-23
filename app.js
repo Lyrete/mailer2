@@ -1,3 +1,7 @@
+//load .env file for test environment
+require('dotenv').config();
+
+//load packages
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -5,6 +9,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 
+//initializing routers
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
@@ -12,7 +17,7 @@ var loginRouter = require('./routes/login');
 var app = express();
 
 app.use(session({
-  secret: 'mk mailer cat',
+  secret: process.env.MAILER_SESSIONSECRET,
   cookie: {maxAge: 60000}
 }));
 
